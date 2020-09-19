@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/theme.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/fa/font-awesome.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/components.css" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/core.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/components.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery-plugins.js"></script>
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/animate.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/nanoscroller.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/layout.css" />
+	<script type="text/javascript">if (window.PrimeFaces) { PrimeFaces.settings.locale = 'en_US'; }</script>
+	<title>PrimeFaces Omega</title>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/js/nanoscroller.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/js/layout.js"></script>
+</h:head>
+<body class="main-body menu-layout-static">
+	<div class="wrapper">
+		<ui:include src="header.xhtml" />
+		<ui:include src="leftmenu.xhtml" />
+		<div class="main">
+			<form id="j_idt20" name="j_idt20" method="post"
+				action="https://www.primefaces.org/omega/sample.xhtml"
+				enctype="application/x-www-form-urlencoded">
+				<input type="hidden" name="j_idt20" value="j_idt20" />
+				<div class="ui-fluid">
+					<div class="ui-g">
+						<div class="ui-g-12">
+							<div class="card">
+								<h1>Form Elements</h1>
+								<div id="j_idt20:j_idt22"
+									class="ui-panelgrid ui-widget ui-panelgrid-blank"
+									style="border: 0px none; background-color: transparent;">
+									<div id="j_idt20:j_idt22_content"
+										class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+
+										<div class="ui-g-12 ui-md-6 ui-lg-6">
+											<div id="j_idt49_content"
+												class="ui-panel-content ui-widget-content">
+												<div class="ui-g">
+													<div class="ui-g-12">
+														<div class="ui-g">
+															<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+																<label id="j_idt33" class="ui-outputlabel ui-widget"
+																	for="acSimple_input">Simple:</label>
+															</div>
+														</div>
+
+														<div id="console"
+															class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+															aria-owns="console_panel" role="combobox"
+															aria-haspopup="listbox" aria-expanded="false">
+															<div class="ui-g">
+																<div class="ui-helper-hidden-accessible">
+																	<input id="console_focus" name="console_focus"
+																		type="text" autocomplete="off" />
+																</div>
+																<div class="ui-helper-hidden-accessible">
+																	<select id="console_input" name="console_input"
+																		tabindex="-1" aria-hidden="true">
+																		<option value="" data-escape="true">Select
+																			One</option>
+																		<option value="Xbox One" data-escape="true">Xbox
+																			One</option>
+																		<option value="PS4" data-escape="true">PS4</option>
+																		<option value="Wii U" data-escape="true">Wii
+																			U</option>
+																	</select>
+																</div>
+																<label id="console_label"
+																	class="ui-selectonemenu-label ui-inputfield ui-corner-all"></label>
+																<div
+																	class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+																	<span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+																</div>
+																<div id="console_panel"
+																	class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+																	<div class="ui-selectonemenu-items-wrapper"
+																		style="max-height: 200px">
+																		<ul id="console_items"
+																			class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+																			role="listbox">
+																			<li
+																				class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																				data-label="Select One" tabindex="-1" role="option">Select
+																				One</li>
+																			<li
+																				class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																				data-label="Xbox One" tabindex="-1" role="option">Xbox
+																				One</li>
+																			<li
+																				class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																				data-label="PS4" tabindex="-1" role="option">PS4</li>
+																			<li
+																				class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																				data-label="Wii U" tabindex="-1" role="option">Wii
+																				U</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<script id="console_s" type="text/javascript">$(function () { PrimeFaces.cw("SelectOneMenu", "widget_console", { id: "console", appendTo: "@(body)", autoWidth: false }); });</script>
+														</div>
+
+													</div>
+													<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+														<label id="j_idt33" class="ui-outputlabel ui-widget"
+															for="acSimple_input">Simple:</label>
+													</div>
+													<div class="ui-g-12">
+														<input id="j_idt56" name="j_idt56" type="text"
+															class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+															placeholder="Name" />
+														<script id="j_idt56_s" type="text/javascript">$(function () { PrimeFaces.cw("InputText", "widget_j_idt56", { id: "j_idt56", maxlength: -2147483648 }); });</script>
+													</div>
+													<div class="ui-g">
+														<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+															<label id="j_idt33" class="ui-outputlabel ui-widget"
+																for="acSimple_input">Simple:</label>
+														</div>
+													</div>
+
+													<div class="ui-g-12">
+														<input id="j_idt58" name="j_idt58" type="text"
+															class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+															placeholder="Age" />
+														<script id="j_idt58_s" type="text/javascript">$(function () { PrimeFaces.cw("InputText", "widget_j_idt58", { id: "j_idt58", maxlength: -2147483648 }); });</script>
+													</div>
+													<div class="ui-g">
+														<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+															<label id="j_idt33" class="ui-outputlabel ui-widget"
+																for="acSimple_input">Simple:</label>
+														</div>
+													</div>
+													<div class="ui-g-12">
+														<textarea id="j_idt60" name="j_idt60"
+															class="ui-inputfield ui-inputtextarea ui-widget ui-state-default ui-corner-all"
+															cols="20" rows="3" placeholder="Message"
+															maxlength="2147483647"></textarea>
+														<script id="j_idt60_s" type="text/javascript">$(function () { PrimeFaces.cw("InputTextarea", "widget_j_idt60", { id: "j_idt60", autoResize: false }); });</script>
+													</div>
+												</div>
+												<button id="j_idt62" name="j_idt62"
+													class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+													type="button">
+													<span class="ui-button-icon-left ui-icon ui-c fa fa-check"></span><span
+														class="ui-button-text ui-c">Send</span>
+												</button>
+												<script id="j_idt62_s" type="text/javascript">$(function () { PrimeFaces.cw("CommandButton", "widget_j_idt62", { id: "j_idt62" }); });</script>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+<form id="form" name="form" method="post" action="https://www.primefaces.org/omega/data.xhtml"
+                enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="form" value="form" />
+
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<div class="card">
+						<h1>DataTable</h1>
+						<div id="form:j_idt21"
+							class="ui-datatable ui-widget ui-datatable-reflow">
+							<label id="form:j_idt21_reflowDD_label"
+								for="form:j_idt21_reflowDD" class="ui-reflow-label">Sort</label><select
+								id="form:j_idt21_reflowDD" name="form:j_idt21_reflowDD"
+								class="ui-reflow-dropdown ui-state-default" autocomplete="off">
+								<option value="0_0">Id Ascending</option>
+								<option value="0_1">Id Descending</option>
+								<option value="1_0">Year Ascending</option>
+								<option value="1_1">Year Descending</option>
+								<option value="2_0">Brand Ascending</option>
+								<option value="2_1">Brand Descending</option>
+								<option value="3_0">Color Ascending</option>
+								<option value="3_1">Color Descending</option>
+							</select>
+							<div class="ui-datatable-header ui-widget-header ui-corner-top">
+								Single with Row Click</div>
+							<div id="form:j_idt21_paginator_top"
+								class="ui-paginator ui-paginator-top ui-widget-header"
+								role="navigation" aria-label="Pagination">
+								<a href="#"
+									class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled"
+									aria-label="First Page" tabindex="-1"><span
+									class="ui-icon ui-icon-seek-first">F</span></a><a href="#"
+									class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled"
+									aria-label="Previous Page" tabindex="-1"><span
+									class="ui-icon ui-icon-seek-prev">P</span></a><span
+									class="ui-paginator-pages"><a
+									class="ui-paginator-page ui-state-default ui-state-active ui-corner-all"
+									tabindex="0" href="#">1</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">2</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">3</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">4</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">5</a></span><a href="#"
+									class="ui-paginator-next ui-state-default ui-corner-all"
+									aria-label="Next Page" tabindex="0"><span
+									class="ui-icon ui-icon-seek-next">N</span></a><a href="#"
+									class="ui-paginator-last ui-state-default ui-corner-all"
+									aria-label="Last Page" tabindex="0"><span
+									class="ui-icon ui-icon-seek-end">E</span></a>
+							</div>
+							<div class="ui-datatable-tablewrapper">
+								<table role="grid">
+									<thead id="form:j_idt21_head">
+										<tr role="row">
+											<th id="form:j_idt21:j_idt23"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Id" scope="col"><span
+												class="ui-column-title">Id</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+											</th>
+											<th id="form:j_idt21:j_idt25"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Year" scope="col"><span
+												class="ui-column-title">Year</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+											</th>
+											<th id="form:j_idt21:j_idt27"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Brand" scope="col"><span
+												class="ui-column-title">Brand</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+											</th>
+											<th id="form:j_idt21:j_idt29"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Color" scope="col"><span
+												class="ui-column-title">Color</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+											</th>
+										</tr>
+									</thead>
+									<tbody id="form:j_idt21_data"
+										class="ui-datatable-data ui-widget-content" tabindex="0">
+										<tr data-ri="0" data-rk="d7bcb785"
+											class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+											role="row" aria-selected="false">
+											<td role="gridcell">d7bcb785</td>
+											<td role="gridcell">1982</td>
+											<td role="gridcell">Mercedes</td>
+											<td role="gridcell">Black</td>
+										</tr>
+										<tr data-ri="0" data-rk="d7bcb785"
+											class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+											role="row" aria-selected="false">
+											<td role="gridcell">d7bcb785</td>
+											<td role="gridcell">1982</td>
+											<td role="gridcell">Mercedes</td>
+											<td role="gridcell">Black</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<div id="form:j_idt21_paginator_bottom"
+								class="ui-paginator ui-paginator-bottom ui-widget-header ui-corner-bottom"
+								role="navigation" aria-label="Pagination">
+								<a href="#"
+									class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled"
+									aria-label="First Page" tabindex="-1"><span
+									class="ui-icon ui-icon-seek-first">F</span></a><a href="#"
+									class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled"
+									aria-label="Previous Page" tabindex="-1"><span
+									class="ui-icon ui-icon-seek-prev">P</span></a><span
+									class="ui-paginator-pages"><a
+									class="ui-paginator-page ui-state-default ui-state-active ui-corner-all"
+									tabindex="0" href="#">1</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">2</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">3</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">4</a><a
+									class="ui-paginator-page ui-state-default ui-corner-all"
+									tabindex="0" href="#">5</a></span><a href="#"
+									class="ui-paginator-next ui-state-default ui-corner-all"
+									aria-label="Next Page" tabindex="0"><span
+									class="ui-icon ui-icon-seek-next">N</span></a><a href="#"
+									class="ui-paginator-last ui-state-default ui-corner-all"
+									aria-label="Last Page" tabindex="0"><span
+									class="ui-icon ui-icon-seek-end">E</span></a>
+							</div>
+							<input type="hidden" id="form:j_idt21_selection"
+								name="form:j_idt21_selection" autocomplete="off" value="" />
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+</form>
+		</div>
+		<!--<div class="main">
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<div class="card">
+					<ui:include src="registeruser.xhtml" />						
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<ui:include src="footer.xhtml" />
+	</div>
+</body>
+</html>

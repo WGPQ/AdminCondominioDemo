@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/theme.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/fa/font-awesome.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/components.css" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/core.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/components.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery-plugins.js"></script>
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/layout.css" />
+	<script type="text/javascript">if (window.PrimeFaces) { PrimeFaces.settings.locale = 'en_US'; }</script>
+	<title>PrimeFaces Omega</title>
+</h:head>
+
+<h:body class="login-body">
+	<div id="login-wrapper">
+		<img id="j_idt7"
+			src="#{request.contextPath}/faces/resources/images/login-logo.png"
+			alt="" />
+		<div id="login-container">
+			<span class="title">INICIAR SECION</span>
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-12">
+					<p:inputText placeholder="Usuario" />
+				</div>
+				<div class="ui-g-12">
+					<p:inputText placeholder="Contraseña" type="password" />
+				</div>
+
+				<br />
+				<div class="ui-g-12">
+					<p:button value="INGRESAR" outcome="dashboard/index" />
+				</div>
+			</div>
+		</div>
+		<div class="login-footer">Condominio Los Girasoles</div>
+
+	</div>
+
+</h:body>
+</html>
