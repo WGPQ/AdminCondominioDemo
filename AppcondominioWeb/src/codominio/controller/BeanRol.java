@@ -5,6 +5,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+
 import condominio.model.entities.Rol;
 import condominio.model.manager.ManagerRol;
 
@@ -24,24 +25,33 @@ public class BeanRol implements Serializable {
 	// variables de sesion
 	private List<Rol> listaRoles;
 	private Rol rol;
-	
+	private String nombre;
+	private String descripcion;
+
 	// Metodos de inteacion entre model y vista
 	@PostConstruct
 	public void inicializar() {
-		listaRoles = managerRol.findAllRoles();
+		listaRoles = managerRol.findAllRoles();	
 		rol = new Rol();
 	}
 	
 	public void actionListenerInsertarRol() {
-		managerRol.insertarRol(rol);
-		listaRoles = managerRol.findAllRoles();
-		//rol = new Rol();
-		JSFUtil.crearMensajeInfo("Rol ingresado");
+		try {
+			managerRol.insertarRol(rol,nombre,descripcion);
+			listaRoles = managerRol.findAllRoles();
+			nombre = "";
+			descripcion = "";
+			rol = new Rol();
+			listaRoles = managerRol.findAllRoles();
+			JSFUtil.crearMensajeInfo("Rol ingresado");
+		} catch (Exception e) {
+			JSFUtil.crearMensajeInfo(e.getMessage());
+		}
+		
 	}
-	
-	
-	//Accesores
 
+	//Accesores
+	
 	public List<Rol> getListaRoles() {
 		return listaRoles;
 	}
@@ -50,18 +60,20 @@ public class BeanRol implements Serializable {
 		this.listaRoles = listaRoles;
 	}
 
-	public Rol getRol() {
-		return rol;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setRol(Rol rol) {
-		this.rol = rol;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	
-	
-	
-	
-	
-	
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
 }

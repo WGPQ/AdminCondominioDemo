@@ -1,100 +1,230 @@
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-	
-		<div class="ui-g-12 ui-md-6 ui-lg-4">
-			<div id="j_idt49"
-				class="ui-panel ui-widget ui-widget-content ui-corner-all"
-				style="text-align: center; background: #fff; height: 100%"
-				data-widget="widget_j_idt49">
-				<div id="j_idt49_header"
-					class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
-					<span class="ui-panel-title">Contact Us</span>
-				</div>
-				<div id="j_idt49_content" class="ui-panel-content ui-widget-content">
-					<div class="ui-g">
-						<div class="ui-g-12">
-							<div id="console"
-								class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
-								aria-owns="console_panel" role="combobox"
-								aria-haspopup="listbox" aria-expanded="false">
-								<div class="ui-helper-hidden-accessible">
-									<input id="console_focus" name="console_focus" type="text"
-										autocomplete="off" />
-								</div>
-								<div class="ui-helper-hidden-accessible">
-									<select id="console_input" name="console_input" tabindex="-1"
-										aria-hidden="true">
-										<option value="" data-escape="true">Select One</option>
-										<option value="Xbox One" data-escape="true">Xbox One</option>
-										<option value="PS4" data-escape="true">PS4</option>
-										<option value="Wii U" data-escape="true">Wii U</option>
-									</select>
-								</div>
-								<label id="console_label"
-									class="ui-selectonemenu-label ui-inputfield ui-corner-all"></label>
-								<div
-									class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
-									<span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
-								</div>
-								<div id="console_panel"
-									class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
-									<div class="ui-selectonemenu-items-wrapper"
-										style="max-height: 200px">
-										<ul id="console_items"
-											class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
-											role="listbox">
-											<li
-												class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
-												data-label="Select One" tabindex="-1" role="option">Select
-												One</li>
-											<li
-												class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
-												data-label="Xbox One" tabindex="-1" role="option">Xbox
-												One</li>
-											<li
-												class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
-												data-label="PS4" tabindex="-1" role="option">PS4</li>
-											<li
-												class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
-												data-label="Wii U" tabindex="-1" role="option">Wii U</li>
-										</ul>
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/theme.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/fa/font-awesome.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/components.css" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/core.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/components.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery-plugins.js"></script>
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/animate.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/nanoscroller.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/layout.css" />
+	<script type="text/javascript">if (window.PrimeFaces) { PrimeFaces.settings.locale = 'en_US'; }</script>
+	<title>PrimeFaces Omega</title>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/js/nanoscroller.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/js/layout.js"></script>
+</h:head>
+<body>
+ <p:panel  id="horizontal" header="Horizontal Toggle" toggleable="true" toggleOrientation="horizontal">
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+            <h:outputText
+                value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
+                but given to ruthless violence whenever anything stands against the good of the family." />
+        </h:panelGrid>
+    </p:panel>
+	<div class="card">
+		<form>
+			<input type="hidden" name="j_idt20" value="j_idt20" />
+			<div class="ui-fluid">
+				<div class="ui-g">
+					<div class="ui-g-12">
+
+						<h1>Form Elements</h1>
+						<div id="j_idt20:j_idt22"
+							class="ui-panelgrid ui-widget ui-panelgrid-blank"
+							style="border: 0px none; background-color: transparent;">
+							<div id="j_idt20:j_idt22_content"
+								class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+
+								<div class="ui-g-12 ui-md-6 ui-lg-6">
+									<div id="j_idt49_content"
+										class="ui-panel-content ui-widget-content">
+										<div class="ui-g">
+											<div class="ui-g-12">
+												<div class="ui-g">
+													<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+														<label id="j_idt33" class="ui-outputlabel ui-widget"
+															for="acSimple_input">Simple:</label>
+													</div>
+												</div>
+
+												<div id="console"
+													class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+													aria-owns="console_panel" role="combobox"
+													aria-haspopup="listbox" aria-expanded="false">
+													<div class="ui-g">
+														<div class="ui-helper-hidden-accessible">
+															<input id="console_focus" name="console_focus"
+																type="text" autocomplete="off" />
+														</div>
+														<div class="ui-helper-hidden-accessible">
+															<select id="console_input" name="console_input"
+																tabindex="-1" aria-hidden="true">
+																<option value="" data-escape="true">Select One</option>
+																<option value="Xbox One" data-escape="true">Xbox
+																	One</option>
+																<option value="PS4" data-escape="true">PS4</option>
+																<option value="Wii U" data-escape="true">Wii U</option>
+															</select>
+														</div>
+														<label id="console_label"
+															class="ui-selectonemenu-label ui-inputfield ui-corner-all"></label>
+														<div
+															class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+															<span class="ui-icon ui-icon-triangle-1-s ui-c"></span>
+														</div>
+														<div id="console_panel"
+															class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+															<div class="ui-selectonemenu-items-wrapper"
+																style="max-height: 200px">
+																<ul id="console_items"
+																	class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+																	role="listbox">
+																	<li
+																		class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																		data-label="Select One" tabindex="-1" role="option">Select
+																		One</li>
+																	<li
+																		class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																		data-label="Xbox One" tabindex="-1" role="option">Xbox
+																		One</li>
+																	<li
+																		class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																		data-label="PS4" tabindex="-1" role="option">PS4</li>
+																	<li
+																		class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+																		data-label="Wii U" tabindex="-1" role="option">Wii
+																		U</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<script id="console_s" type="text/javascript">$(function () { PrimeFaces.cw("SelectOneMenu", "widget_console", { id: "console", appendTo: "@(body)", autoWidth: false }); });</script>
+												</div>
+
+											</div>
+
+											<div class="ui-g">
+												<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+													<h:outputText value="Telefono:" />
+												</div>
+											</div>
+
+											<div class="ui-g-12">
+												<p:inputText placeholder="Age" />
+
+											</div>
+											<div class="ui-g">
+												<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+													<h:outputText value="Telefono:" />
+												</div>
+											</div>
+
+											<div class="ui-g-12">
+												<p:inputText placeholder="Age" />
+
+											</div>
+											<div class="ui-g">
+												<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+													<h:outputText value="Telefono:" />
+												</div>
+											</div>
+
+											<div class="ui-g-12">
+												<p:inputText placeholder="Age" />
+
+											</div>
+											<div class="ui-g">
+												<div class="ui-panelgrid-cell ui-g-12 ui-md-12">
+													<h:outputText value="Telefono:" />
+												</div>
+											</div>
+
+											<div class="ui-g-12">
+												<p:inputText placeholder="Age" />
+
+											</div>
+
+										</div>
+
+										<p:commandButton value="Enviar">
+										</p:commandButton>
 									</div>
 								</div>
 							</div>
-							<script id="console_s" type="text/javascript">$(function () { PrimeFaces.cw("SelectOneMenu", "widget_console", { id: "console", appendTo: "@(body)", autoWidth: false }); });</script>
 						</div>
-						<div class="ui-g-12">
-							<input id="j_idt56" name="j_idt56" type="text"
-								class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
-								placeholder="Name" />
-							<script id="j_idt56_s" type="text/javascript">$(function () { PrimeFaces.cw("InputText", "widget_j_idt56", { id: "j_idt56", maxlength: -2147483648 }); });</script>
-						</div>
-						<div class="ui-g-12">
-							<input id="j_idt58" name="j_idt58" type="text"
-								class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
-								placeholder="Age" />
-							<script id="j_idt58_s" type="text/javascript">$(function () { PrimeFaces.cw("InputText", "widget_j_idt58", { id: "j_idt58", maxlength: -2147483648 }); });</script>
-						</div>
-						<div class="ui-g-12">
-							<textarea id="j_idt60" name="j_idt60"
-								class="ui-inputfield ui-inputtextarea ui-widget ui-state-default ui-corner-all"
-								cols="20" rows="3" placeholder="Message" maxlength="2147483647"></textarea>
-							<script id="j_idt60_s" type="text/javascript">$(function () { PrimeFaces.cw("InputTextarea", "widget_j_idt60", { id: "j_idt60", autoResize: false }); });</script>
-						</div>
+
 					</div>
-					<button id="j_idt62" name="j_idt62"
-						class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
-						type="button">
-						<span class="ui-button-icon-left ui-icon ui-c fa fa-check"></span><span
-							class="ui-button-text ui-c">Send</span>
-					</button>
-					<script id="j_idt62_s" type="text/javascript">$(function () { PrimeFaces.cw("CommandButton", "widget_j_idt62", { id: "j_idt62" }); });</script>
 				</div>
 			</div>
-			<script id="j_idt49_s" type="text/javascript">$(function () { PrimeFaces.cw("Panel", "widget_j_idt49", { id: "j_idt49" }); });</script>
-		</div>
-	
 
-</ui:composition>
+		</form>
+
+		<form>
+			<input type="hidden" name="j_idt20" value="j_idt20" />
+			<div class="ui-fluid">
+				<div class="ui-g">
+					<div class="ui-g-12">
+
+						<h1>Form Elements</h1>
+						<p:dataTable var="usuario" value="#{beanUsuario.listausuarios}">
+							<p:column headerText="Id">
+								<h:outputText value="#{usuario.cedula}" />
+							</p:column>
+
+							<p:column headerText="Year">
+								<h:outputText value="#{usuario.nombre}" />
+							</p:column>
+
+							<p:column headerText="Brand">
+								<h:outputText value="#{usuario.apellido}" />
+							</p:column>
+							<p:column headerText="Color">
+								<h:outputText value="#{usuario.genero}" />
+							</p:column>
+							<p:column headerText="Color">
+								<h:outputText value="#{usuario.telefono}" />
+							</p:column>
+							<p:column headerText="Color">
+								<h:outputText value="#{usuario.email}" />
+							</p:column>
+							<p:column headerText="Color">
+								<h:outputText value="#{usuario.estado}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>

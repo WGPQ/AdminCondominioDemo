@@ -25,31 +25,42 @@
 						</a>
 						<ul>
 							<li><a href="#"><i class="fa fa-fw fa-sliders"></i><span>Perfil</span></a></li>
-							<li><a href="#"><i class="fa fa-fw fa-sign-out"></i><span>Cerrar
-										Secion</span></a></li>
+							<li>
+							<p:commandLink action="#{beanLogin.salirSistema()}">
+							<i class="fa fa-fw fa-sign-out"></i>
+							<span>Cerrar Sesion</span>
+							</p:commandLink> </li>
 						</ul>
 					</div>
 
 					<div class="menu">
 						<ul id="menuform:j_idt16" class="menu-container">
-							<li id="menuform:om_dashboard" role="menuitem"><a href="#"><i
-									class="fa fa-home fa-fw"></i><span>Administrador</span></a></li>
+							<li><p:link outcome="home" target="pantalla">
+									<i class="fa fa-home fa-fw"></i>
+									<span>Home</span>
+								</p:link></li>
 
 							<li id="menuform:om_components" role="menuitem"><a href="#"><i
 									class="fa fa-sitemap fa-fw"></i><span>Components</span><i
 									class="fa fa-fw fa-angle-down"></i></a>
 								<ul role="menu">
-									<li id="menuform:om_sample" role="menuitem">
-									<a href="#"><i class="fa fa-columns fa-fw"></i><span>Sample Page</span></a>
-									</li>
-									<li id="menuform:om_forms" role="menuitem">
-									<a href="#"><i class="fa fa-code fa-fw"></i><span>Forms</span></a>
-									</li>
-									<li id="menuform:om_data" role="menuitem">
-									<a href="#"><i class="fa fa-table fa-fw"></i><span>Data</span></a></li>
+									<li id="menuform:om_sample" role="menuitem"><a href="#"><i
+											class="fa fa-columns fa-fw"></i><span>Sample Page</span></a></li>
+									<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+											class="fa fa-code fa-fw"></i><span>Forms</span></a></li>
+									<li id="menuform:om_data" role="menuitem"><a href="#"><i
+											class="fa fa-table fa-fw"></i><span>Data</span></a></li>
 								</ul></li>
-							<li id="menuform:om_db_landing" role="menuitem"><a href="#"><i
-									class="fa fa-certificate fa-fw"></i><span>Landing</span></a></li>
+							<li role="menuitem"><p:link outcome="registeruser"
+									target="pantalla">
+									<i class="fa fa-user"></i>
+									<span>Condominos</span>
+								</p:link></li>
+
+							<li role="menuitem"><p:link outcome="rol" target="pantalla">
+									<i class="fa fa-certificate fa-fw"></i>
+									<span>Rol</span>
+								</p:link></li>
 						</ul>
 						<script id="menuform:j_idt16_s" type="text/javascript">$(function () { PrimeFaces.cw("Omega", "widget_menuform_j_idt16", { id: "menuform:j_idt16" }); });</script>
 					</div>

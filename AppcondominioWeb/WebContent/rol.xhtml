@@ -13,9 +13,9 @@
 	</f:facet>
 </h:head>
 <body>
-
 	<!-- Actualiza la cola de mensajes de Primefaces -->
-	<p:growl>
+	
+<p:growl>
 		<p:autoUpdate />
 	</p:growl>
 
@@ -24,20 +24,17 @@
 		<p:messages>
 			<p:autoUpdate />
 		</p:messages>
-
 		<p:panel header="Ingreso de Usuarios">
 
 			<p:panelGrid columns="4">
 				<h:outputText value="Nombre" />
-				<h:inputText value="#{beanRol.rol.nombre}" />
+				<h:inputText value="#{beanRol.nombre}" />
 				<h:outputText value="Descripcion" />
-				<h:inputText value="#{beanRol.rol.descripcion}" />
+				<h:inputText value="#{beanRol.descripcion}" />
 
 				<p:commandButton value="Insert" icon="fa fa-save" update="@form,:form2"
 					actionListener="#{beanRol.actionListenerInsertarRol()}" />
 			</p:panelGrid>
-
-
 		</p:panel>
 	</h:form>
 
@@ -46,6 +43,9 @@
 		<p:panel header="Roles del sistema">
 			<p:dataTable value="#{beanRol.listaRoles}" var="rol"
 				paginator="false" rows="5">
+				<p:column headerText="ID" filterMatchMode="contains" priority="1">
+					<h:outputText value="#{rol.idRol}" />
+				</p:column>
 				<p:column headerText="ROL" filterMatchMode="contains" priority="1">
 					<h:outputText value="#{rol.nombre}" />
 				</p:column>
@@ -53,23 +53,7 @@
 					priority="1">
 					<h:outputText value="#{rol.descripcion}" />
 				</p:column>
-				<!--  
-				<p:column headerText="OPCIONES" priority="1">
-					<p:commandButton icon="fa fa-close" update="@form"
-						actionListener="#{beanEstudiante.actionListenerEliminarEstudiante(estudiantes.cedula)}">
-						<p:confirm header="Confirmacion"
-							message="Desea eliminar este dato?"
-							icon="fa fa-exclamation-triangle">
-						</p:confirm>
-					</p:commandButton>
-					<p:commandButton icon="fa fa-edit" title="Editar"
-						actionListener="#{beanEstudiante.actionListenerSelecionarEstudiante(estudiantes)}"
-						update=":formEdicion" oncomplete="PF('dlgEdicion').show();">
-					</p:commandButton>
-
-				</p:column>
-				-->
-
+				
 			</p:dataTable>
 		</p:panel>
 	</h:form>

@@ -27,34 +27,50 @@
 		src="#{request.contextPath}/faces/resources/jquery/jquery-plugins.js"></script>
 	<link type="text/css" rel="stylesheet"
 		href="#{request.contextPath}/faces/resources/css/layout.css" />
-	<script type="text/javascript">if (window.PrimeFaces) { PrimeFaces.settings.locale = 'en_US'; }</script>
+	<script type="text/javascript">
+		if (window.PrimeFaces) {
+			PrimeFaces.settings.locale = 'en_US';
+		}
+	</script>
 	<title>PrimeFaces Omega</title>
 </h:head>
 
 <h:body class="login-body">
-	<div id="login-wrapper">
-		<img id="j_idt7"
-			src="#{request.contextPath}/faces/resources/images/login-logo.png"
-			alt="" />
-		<div id="login-container">
-			<span class="title">INICIAR SECION</span>
-			<div class="ui-g ui-fluid">
-				<div class="ui-g-12">
-					<p:inputText placeholder="Usuario" />
-				</div>
-				<div class="ui-g-12">
-					<p:inputText placeholder="Contraseña" type="password" />
+<p:growl>
+		<p:autoUpdate />
+	</p:growl>
+	<h:form>
+		<div id="login-wrapper">
+			<img id="j_idt7"
+				src="#{request.contextPath}/faces/resources/images/login-logo.png"
+				alt="" />
+
+			<div id="login-container">
+				<span class="title">INICIAR SECION</span>
+
+				<div class="ui-g ui-fluid">
+
+					<div class="ui-g-12">
+						<p:inputText value="#{beanLogin.email}" placeholder="Usuario">
+						</p:inputText>
+					</div>
+
+					<div class="ui-g-12">
+						<p:inputText value="#{beanLogin.clave}" placeholder="Contraseña"
+							type="password">
+						</p:inputText>
+					</div>
+					<br />
+
+					<p:commandButton value="Ingresar"
+						action="#{beanLogin.accederSistema()}" />
+					<div class="ui-g-12"></div>
 				</div>
 
-				<br />
-				<div class="ui-g-12">
-					<p:button value="INGRESAR" outcome="dashboard/index" />
-				</div>
 			</div>
+
+			<div class="login-footer">Condominio Los Girasoles</div>
 		</div>
-		<div class="login-footer">Condominio Los Girasoles</div>
-
-	</div>
-
+	</h:form>
 </h:body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width, initial-scale=1, shirnk-to-fit=no, user-scalable=no" />
+		<title>Login</title>
+	</f:facet>
+</h:head>
+<body>
+
+	<h:form>
+		<p:panel header="Login">
+			<p:panelGrid columns="2">
+				<h:outputText value="Usuario: " />
+				<p:inputText value="#{beanUsuario.email}"></p:inputText>
+				<h:outputText value="Clave" />
+				<p:password value="#{beanUsuario.clave}"></p:password>
+
+				<p:selectOneMenu value="#{beanUsuario.rol}">
+					<f:selectItem itemLabel="Seleccione Rol.."
+						noSelectionOption="true" />
+					<f:selectItems value="#{beanUsuario.listaRol}" var="r"
+						itemLabel="#{r.getNombre()}" itemValue="#{r.getIdRol()}" />
+
+				</p:selectOneMenu>
+
+				<p:commandButton value="Ingresar"
+					action="#{beanUsuario.actionValidarUsuario()}"></p:commandButton>
+
+
+			</p:panelGrid>
+
+		</p:panel>
+	</h:form>
+
+
+</body>
+</html>
