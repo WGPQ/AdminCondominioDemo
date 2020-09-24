@@ -14,24 +14,26 @@
 </h:head>
 <body>
 	<!-- Actualiza la cola de mensajes de Primefaces -->
-	
-<p:growl>
+
+	<p:growl>
 		<p:autoUpdate />
 	</p:growl>
 
 	<!-- Formulario de ingreso de roles-->
 	<h:form id="form1">
-		<p:messages>
-			<p:autoUpdate />
-		</p:messages>
-		<p:panel header="Ingreso de Usuarios">
+		<p:panel collapsed="#{beanRol.panelColapsado}">
+			<f:facet name="header">
+				<p:commandButton value="Nuevo Rol" icon="fa fa-plus" update="@form"
+					actionListener="#{beanRol.actionListenerColapsar()}"></p:commandButton>
+			</f:facet>
 
 			<p:panelGrid columns="4">
 				<h:outputText value="Nombre" />
 				<h:inputText value="#{beanRol.nombre}" />
 				<h:outputText value="Descripcion" />
 				<h:inputText value="#{beanRol.descripcion}" />
-				<p:commandButton value="Insert" icon="fa fa-save" update="@form,:form2"
+				<p:commandButton value="Insert" icon="fa fa-save"
+					update="@form,:form2"
 					actionListener="#{beanRol.actionListenerInsertarRol()}" />
 			</p:panelGrid>
 
@@ -39,25 +41,69 @@
 		</p:panel>
 	</h:form>
 
+	<br />
+
 	<!-- Tabla de roles-->
 	<h:form id="form2">
 		<p:panel header="Roles del sistema">
-			<p:dataTable value="#{beanRol.listaRoles}" var="rol"
-				paginator="false" rows="5">
-				<p:column headerText="ID" filterMatchMode="contains" priority="1">
-					<h:outputText value="#{rol.idRol}" />
-				</p:column>
-				<p:column headerText="ROL" filterMatchMode="contains" priority="1">
+			<p:dataTable value="#{beanRol.listaRoles}" var="rol" paginator="true"
+				rows="5">
+
+				<p:column headerText="ROL" filterMatchMode="contains" priority="1"
+					filterBy="#{rol.nombre}">
 					<h:outputText value="#{rol.nombre}" />
 				</p:column>
 				<p:column headerText="DESCRIPCION" filterMatchMode="contains"
 					priority="1">
 					<h:outputText value="#{rol.descripcion}" />
 				</p:column>
+				<p:column headerText="OPCIONES">
+					<p:commandButton icon="fa fa-close" title="Eliminar" update="@form"
+						actionListener="#{beanRol.actionListenerEliminarRol(rol.idRol)}"
+						style="width:25px">
+						<p:confirm header="Confirmacion!" message="Desea eliminar?"
+							icon="fa fa-exclamation-triangle"></p:confirm>
+					</p:commandButton>
+					<p:commandButton icon="fa fa-edit" title="Editar"
+						actionListener="#{beanRol.actionListenerSelecionarRol(rol)}"
+						update=":formEdicion" oncomplete="PF('dlgEdicion').show()">
+
+					</p:commandButton>
+				</p:column>
 
 			</p:dataTable>
 		</p:panel>
 	</h:form>
+
+	<p:dialog header="Editar Informacion" widgetVar="dlgEdicion"
+		modal="true">
+		<h:form id="formEdicion">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<h:outputText value="Id: " />
+			<h:outputText value="#{beanRol.rolSelecionado.idRol}" />
+			<p:panelGrid columns="4">
+				<h:outputText value="Nombre" />
+				<h:inputText value="#{beanRol.rolSelecionado.nombre}" />
+				<h:outputText value="Descripcion" />
+				<h:inputText value="#{beanRol.rolSelecionado.descripcion}" />
+			</p:panelGrid>
+			<p:commandButton value="Actualizar" icon="fa fa-save"
+				update="@form,:form2"
+				actionListener="#{beanRol.actionListenerActualizarRol()}"></p:commandButton>
+
+
+		</h:form>
+	</p:dialog>
+
+	<!-- Cuadro de dialogo para la elimnacion de roles -->
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="Si" type="button"
+			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="fa fa-check" />
+	</p:confirmDialog>
 
 </body>
 </html>

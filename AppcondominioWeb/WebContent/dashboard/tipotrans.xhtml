@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta name="Viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Ingreso de Tipo de transaccion</title>
+	</f:facet>
+</h:head>
+<body>
+	<!-- Actualiza la cola de mensajes de Primefaces -->
+
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
+
+	<!-- Formulario de ingreso de roles-->
+	<h:form id="form1">
+		<p:panel collapsed="#{beanTipotrans.panelColapasdo}">
+			<f:facet name="header">
+				<p:commandButton value="Nuevo Rol" icon="fa fa-plus" update="@form"
+					actionListener="#{beanTipotrans.actionListenerColapsar()}"></p:commandButton>
+			</f:facet>
+
+			<p:panelGrid columns="2">
+				<h:outputText value="Nombre" />
+				<h:inputText value="#{beanTipotrans.nombrett}" />
+		
+				<p:commandButton value="Insert" icon="fa fa-save"
+					update="@form,:form2"
+					actionListener="#{beanTipotrans.actionListenerInsertarTipotrans()}" />
+			</p:panelGrid>
+
+
+		</p:panel>
+	</h:form>
+
+	<br />
+
+	<!-- Tabla de roles-->
+	<h:form id="form2">
+		<p:panel header="Tipos de transaccion del sistema">
+			<p:dataTable value="#{beanTipotrans.listTipoTrans}" var="ttrans" paginator="true"
+				rows="5">
+
+				<p:column headerText="TIPO DE TRANSACCION" filterMatchMode="contains" priority="1"
+					filterBy="#{ttrans.nombre}">
+					<h:outputText value="#{ttrans.nombre}" />
+				</p:column>
+			
+				<p:column headerText="OPCIONES">
+					<p:commandButton icon="fa fa-close" title="Eliminar" update="@form"
+						actionListener="#{beanTipotrans.actionListenerEliminarTipotrans(ttrans.idTTransaccion)}"
+						style="width:25px">
+						<p:confirm header="Confirmacion!" message="Desea eliminar?"
+							icon="fa fa-exclamation-triangle"></p:confirm>
+					</p:commandButton>
+					<p:commandButton icon="fa fa-edit" title="Editar"
+						actionListener="#{beanTipotrans.actionListenerSelecionarTipotrans(ttrans)}"
+						update=":formEdicion" oncomplete="PF('dlgEdicion').show()">
+
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+	<p:dialog header="Editar Informacion" widgetVar="dlgEdicion"
+		modal="true">
+		<h:form id="formEdicion">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<h:outputText value="Id: " />
+			<h:outputText value="#{beanTipotrans.tipotransSelecionado.idTTransaccion}" />
+			<p:panelGrid columns="4">
+				<h:outputText value="Nombre" />
+				<h:inputText value="#{beanTipotrans.tipotransSelecionado.nombre}" />
+			
+			</p:panelGrid>
+			<p:commandButton value="Actualizar" icon="fa fa-save"
+				update="@form,:form2"
+				actionListener="#{beanTipotrans.actionListenerActualizarTipotrans()}"></p:commandButton>
+
+
+		</h:form>
+	</p:dialog>
+
+	<!-- Cuadro de dialogo para la elimnacion de roles -->
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="Si" type="button"
+			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="fa fa-check" />
+	</p:confirmDialog>
+
+</body>
+</html>

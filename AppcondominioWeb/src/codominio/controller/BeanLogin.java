@@ -38,7 +38,9 @@ public class BeanLogin implements Serializable {
 	public String accederSistema() {
 		try {
 			logindto = condominioseguridad.accederalSistema(email, clave);
+			System.out.println("*************************"+logindto.getRutaAcceso()+"********************************");
 			return logindto.getRutaAcceso() + "?faces-redirect=true";
+			
 		} catch (Exception e) {
 			JSFUtil.crearMensajeError(e.getMessage());
 		}

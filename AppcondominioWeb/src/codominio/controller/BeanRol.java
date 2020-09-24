@@ -27,12 +27,15 @@ public class BeanRol implements Serializable {
 	private Rol rol;
 	private String nombre;
 	private String descripcion;
+	private boolean panelColapsado;
+	private Rol rolSelecionado;
 
 	// Metodos de inteacion entre model y vista
 	@PostConstruct
 	public void inicializar() {
 		listaRoles = managerRol.findAllRoles();	
 		rol = new Rol();
+		panelColapsado =  true;
 	}
 	
 	public void actionListenerInsertarRol() {
@@ -45,10 +48,37 @@ public class BeanRol implements Serializable {
 			listaRoles = managerRol.findAllRoles();
 			JSFUtil.crearMensajeInfo("Rol ingresado");
 		} catch (Exception e) {
-			JSFUtil.crearMensajeInfo(e.getMessage());
+			JSFUtil.crearMensajeError(e.getMessage());
 		}
 		
 	}
+	
+	public void actionListenerColapsar() {
+		panelColapsado = !panelColapsado;
+	}
+	
+	public void actionListenerEliminarRol(int id) {
+		managerRol.eliminarRol(id);
+		listaRoles  = managerRol.findAllRoles();
+		JSFUtil.crearMensajeInfo("Rol Eliminado");
+	}
+	
+	public void actionListenerSelecionarRol(Rol rol) {
+		rolSelecionado = rol;
+	}
+	
+	public void actionListenerActualizarRol() {
+		try {
+			managerRol.actualiarRol(rolSelecionado);
+			listaRoles = managerRol.findAllRoles();
+			JSFUtil.crearMensajeInfo("Rol actualizado");
+		} catch (Exception e) {
+			JSFUtil.crearMensajeError(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 	//Accesores
 	
@@ -75,5 +105,22 @@ public class BeanRol implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	public boolean isPanelColapsado() {
+		return panelColapsado;
+	}
+
+	public void setPanelColapsado(boolean panelColapsado) {
+		this.panelColapsado = panelColapsado;
+	}
+
+	public Rol getRolSelecionado() {
+		return rolSelecionado;
+	}
+
+	public void setRolSelecionado(Rol rolSelecionado) {
+		this.rolSelecionado = rolSelecionado;
+	}
+	
 
 }

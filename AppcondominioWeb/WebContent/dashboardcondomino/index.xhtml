@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/theme.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/fa/font-awesome.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/components.css" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/core.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/components.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/jquery/jquery-plugins.js"></script>
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/animate.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/nanoscroller.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/faces/resources/css/layout.css" />
+	<script type="text/javascript">if (window.PrimeFaces) { PrimeFaces.settings.locale = 'en_US'; }</script>
+	<title>PrimeFaces Omega</title>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/js/nanoscroller.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/faces/resources/js/layout.js"></script>
+</h:head>
+<body class="main-body menu-layout-static">
+	<div class="wrapper">
+		<ui:include src="header.xhtml" />
+		<ui:include src="leftmenu.xhtml" />
+		<div class="main" >
+		<iframe name="pantalla" height="523px" width="100%" frameborder="0"></iframe>
+		</div>
+		<ui:include src="footer.xhtml" />
+	</div>	
+</body>
+</html>

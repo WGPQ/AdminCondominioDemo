@@ -32,7 +32,7 @@ private EntityManager em;
 		
 		if(!usuario.getPasword().equals(clave))
 			throw new Exception("Error clave incorrecta.");
-		
+		System.out.print("*******************************************************************************************************************************");
     	LoginDTO logindto=new LoginDTO();
     	int rol=(int)usuario.getRol().getIdRol();
     	logindto.setTipoUsuario(rol);
@@ -40,15 +40,21 @@ private EntityManager em;
     	
     	if(rol==1)
 			logindto.setRutaAcceso("/dashboard/index.xhtml");
-		else if(rol==2)
-			logindto.setRutaAcceso("/dashboardc/index.xhtml");
+		else if(rol==15)
+			logindto.setRutaAcceso("/dashboardcondomino/index.xhtml");
     	
     	return logindto;
     }
     public Usuario findUsuarioByEmail(String email) {
-		String sql = "select u from Usuario u where u.email = : dmpEmail";
-		Query q = em.createQuery(sql, Usuario.class).setParameter("dmpEmail", email);
-		return (Usuario) q.getSingleResult();
+    	try {
+    		String sql = "select u from Usuario u where u.email = : dmpEmail";
+    		Query q = em.createQuery(sql, Usuario.class).setParameter("dmpEmail", email);
+    		return (Usuario) q.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+    	return null;
+		
 		
 	}
     

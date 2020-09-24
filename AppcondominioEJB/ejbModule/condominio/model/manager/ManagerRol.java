@@ -44,5 +44,24 @@ public class ManagerRol {
 		rol.setDescripcion(descripcion);
 		em.persist(rol);
 	}
+	
+	public Rol findRolById(int id) {
+		return em.find(Rol.class, id);
+	}
+	
+	public void eliminarRol(int id) {
+		Rol rol = findRolById(id);
+		if(rol != null)
+			em.remove(rol);
+	}
+	
+	public void actualiarRol(Rol rol) throws Exception {
+		Rol r = findRolById(rol.getIdRol());
+		if(r == null)
+			throw new Exception("No existe Rol que especifica");
+		r.setNombre(rol.getNombre());
+		r.setDescripcion(rol.getDescripcion());
+		em.merge(r);
+	}
 
 }

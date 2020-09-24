@@ -1,0 +1,78 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<form id="menuform" name="menuform" method="post"
+		action="https://www.primefaces.org/omega/empty.xhtml"
+		enctype="application/x-www-form-urlencoded">
+		<input type="hidden" name="menuform" value="menuform" />
+
+		<div class="sidebar">
+			<div class="nano">
+				<div class="nano-content sidebar-scroll-content">
+					<div class="logo">
+						<img id="menuform:j_idt12"
+							src="#{request.contextPath}/faces/resources/images/logo.png"
+							alt="" width="113" />
+					</div>
+
+					<div class="profile">
+						<img id="menuform:j_idt14"
+							src="#{request.contextPath}/faces/resources/images/avatar_4.png"
+							alt="" /> <a id="profile-button" href="#"> <span
+							class="username">Mi cuenta</span> <i class="fa fa-fw fa-cog"></i>
+						</a>
+						<ul>
+							<li><a href="#"><i class="fa fa-fw fa-sliders"></i><span>Perfil</span></a></li>
+							<li>
+							<p:commandLink action="#{beanLogin.salirSistema()}">
+							<i class="fa fa-fw fa-sign-out"></i>
+							<span>Cerrar Sesion</span>
+							</p:commandLink> </li>
+						</ul>
+					</div>
+
+					<div class="menu">
+						<ul id="menuform:j_idt16" class="menu-container">
+							<li><p:link outcome="home" target="pantalla">
+									<i class="fa fa-home fa-fw"></i>
+									<span>Home</span>
+								</p:link></li>
+
+							<li id="menuform:om_components" role="menuitem"><a href="#"><i
+									class="fa fa-sitemap fa-fw"></i><span>Transacciones</span><i
+									class="fa fa-fw fa-angle-down"></i></a>
+								<ul role="menu">
+									<li id="menuform:om_sample" role="menuitem"><a href="#"><i
+											class="fa fa-columns fa-fw"></i><span>Gastos</span></a></li>
+									<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+											class="fa fa-code fa-fw"></i><span>Cobros</span></a></li>
+									<li id="menuform:om_data" role="menuitem"><a href="#"><i
+											class="fa fa-table fa-fw"></i><span>Resumen</span></a></li>
+								</ul></li>
+							<li role="menuitem"><p:link outcome="registeruser"
+									target="pantalla">
+									<i class="fa fa-user"></i>
+									<span>Condominos</span>
+								</p:link></li>
+
+							<li role="menuitem"><p:link outcome="rol" target="pantalla">
+									<i class="fa fa-certificate fa-fw"></i>
+									<span>Rol</span>
+								</p:link></li>
+								<li role="menuitem"><p:link outcome="rol" target="pantalla">
+									<i class="fa fa-certificate fa-fw"></i>
+									<span>Transacciones</span>
+								</p:link></li>
+						</ul>
+						<script id="menuform:j_idt16_s" type="text/javascript">$(function () { PrimeFaces.cw("Omega", "widget_menuform_j_idt16", { id: "menuform:j_idt16" }); });</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" name="javax.faces.ViewState"
+			id="j_id1:javax.faces.ViewState:0"
+			value="2111974765562989912:500420170707152073" autocomplete="off" />
+	</form>
+</ui:composition>
