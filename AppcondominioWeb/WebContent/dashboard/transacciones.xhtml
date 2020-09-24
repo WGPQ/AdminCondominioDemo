@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta name="Viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Ingreso de Transaccion</title>
+	</f:facet>
+</h:head>
+
+<body>
+
+	<h1>Creacion de tipo de transacion</h1>
+
+	<!-- Formulario de ingreso de tipos de -->
+	<h:form id="form1">
+		<p:panel collapsed="#{beanTransaccion.panelColapsado}">
+			<f:facet name="header">
+				<p:commandButton value="Nuevo ingreso o gasto" icon="fa fa-plus"
+					update="@form"
+					actionListener="#{beanTransaccion.actionListenerColapsar()}"></p:commandButton>
+			</f:facet>
+
+			<p:panelGrid columns="8">
+				<h:outputText value="Nombre de ingreso/gasto" />
+				<h:inputText value="#{beanTransaccion.nombreTransacionDescripcion}" />
+
+				<p:selectOneMenu value="#{beanTransaccion.idTipoTransaccion}">
+					<f:selectItem itemLabel="Seleccione clase de transaccion"
+						noSelectionOption="true" />
+					<f:selectItems value="#{beanTransaccion.listaTipoTransaccion}"
+						var="ttrans" itemLabel="#{ttrans.nombre}"
+						itemValue="#{ttrans.idTTransaccion}">
+
+					</f:selectItems>
+				</p:selectOneMenu>
+
+				<p:selectOneMenu value="#{beanTransaccion.idRol}">
+					<f:selectItem itemLabel="Seleccione Rol" noSelectionOption="true" />
+					<f:selectItems value="#{beanTransaccion.listaRoles}" var="r"
+						itemLabel="#{r.nombre}" itemValue="#{r.idRol}">
+					</f:selectItems>
+				</p:selectOneMenu>
+
+
+				<p:commandButton value="Insert" icon="fa fa-save"
+					update="@form,:form2"
+					actionListener="#{beanTransaccion.actionListenerInsertarTransacionDescripcion()}" />
+			</p:panelGrid>
+
+
+		</p:panel>
+	</h:form>
+	<br />
+	<!-- Tabla de transacion descripcion -->
+	<h:form id="form2">
+		<p:panel header="Tipos de transaccion descripcion">
+			<p:dataTable value="#{beanTransaccion.listaTransaccionDescripcion}"
+				var="tdes" paginator="true" rows="5">
+
+				<p:column headerText="NOMBRE" filterMatchMode="contains"
+					priority="1">
+					<h:outputText value="#{tdes.nombre}" />
+				</p:column>
+
+				<p:column headerText="CLASE" filterMatchMode="contains" priority="1"
+					filterBy="#{tdes.tipoTransaccion.nombre}">
+					<h:outputText value="#{tdes.tipoTransaccion.nombre}" />
+				</p:column>
+
+				<p:column headerText="PROPIETARIO" filterMatchMode="contains"
+					priority="1" filterBy="#{tdes.rol.nombre}">
+					<h:outputText value="#{tdes.rol.nombre}" />
+				</p:column>
+
+				<p:column headerText="OPCIONES">
+					<p:commandButton icon="fa fa-close" title="Eliminar" update="@form"
+						actionListener="#{beanTransaccion.actionListenerEliminarTransaccionDesc(tdes.idTDescripcion)}"
+						style="width:25px">
+						<p:confirm header="Confirmacion!" message="Desea eliminar?"
+							icon="fa fa-exclamation-triangle"></p:confirm>
+					</p:commandButton>
+
+					<p:commandButton icon="fa fa-edit" title="Editar"
+						actionListener="#{beanTransaccion.actionListenerSelecionarTransaccionDesc(tdes)}"
+						update=":formEdicion" oncomplete="PF('dlgEdicion').show()">
+					</p:commandButton>
+				</p:column>
+
+
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+	<p:dialog header="Editar Informacion" widgetVar="dlgEdicion"
+		modal="true">
+		<h:form id="formEdicion">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<h:outputText value="Id: " />
+			<h:outputText value="#{beanTransaccion.transaccionDescSelecionado.idTDescripcion}" />
+			<p:panelGrid columns="10">
+				<h:outputText value="Nombre" />
+				<h:inputText value="#{beanTransaccion.nombreTransacionDescripcion}" />
+				
+				<p:selectOneMenu value="#{beanTransaccion.idTipoTransaccion}">
+					<f:selectItem itemLabel="Seleccione clase de transaccion"
+						noSelectionOption="true" />
+					<f:selectItems value="#{beanTransaccion.listaTipoTransaccion}"
+						var="ttrans" itemLabel="#{ttrans.nombre}"
+						itemValue="#{ttrans.idTTransaccion}">
+
+					</f:selectItems>
+				</p:selectOneMenu>
+
+				<p:selectOneMenu value="#{beanTransaccion.idRol}">
+					<f:selectItem itemLabel="Seleccione Rol" noSelectionOption="true" />
+					<f:selectItems value="#{beanTransaccion.listaRoles}" var="r"
+						itemLabel="#{r.nombre}" itemValue="#{r.idRol}">
+					</f:selectItems>
+				</p:selectOneMenu>
+			</p:panelGrid>
+			<p:commandButton value="Actualizar" icon="fa fa-save"
+				update="@form,:form2"
+				actionListener="#{beanTransaccion.actionListenerActualizarTransacionDesc()}"></p:commandButton>
+
+
+		</h:form>
+	</p:dialog>
+
+	<!-- Cuadro de dialogo para la elimnacion de roles -->
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="Si" type="button"
+			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="fa fa-check" />
+	</p:confirmDialog>
+
+</body>
+</html>

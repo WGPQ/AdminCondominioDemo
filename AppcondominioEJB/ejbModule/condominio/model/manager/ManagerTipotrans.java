@@ -31,7 +31,7 @@ public class ManagerTipotrans {
 	// Metodos de extracion de datos
 	
 	public List<TipoTransaccion> findAllTipotrans(){
-		String consulta = "SELECT t FROM TipoTransaccion t";
+		String consulta = "select u from TipoTransaccion u";
 		Query q = em.createQuery(consulta, TipoTransaccion.class);
 		return q.getResultList();
 		
