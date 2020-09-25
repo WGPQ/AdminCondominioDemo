@@ -20,6 +20,7 @@ public class BeanTipotrans implements Serializable {
 	// invocacion EJB
 	@EJB
 	private ManagerTipotrans managerTipotrans;
+	
 
 	// variables de sesion
 	private List<TipoTransaccion> listTipoTrans;

@@ -38,6 +38,8 @@ public class BeanLogin implements Serializable {
 	public String accederSistema() {
 		try {
 			logindto = condominioseguridad.accederalSistema(email, clave);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioactualmenteautorizadoparanaegar", logindto);
+			
 			System.out.println("*************************"+logindto.getRutaAcceso()+"********************************");
 			return logindto.getRutaAcceso() + "?faces-redirect=true";
 			
@@ -47,10 +49,6 @@ public class BeanLogin implements Serializable {
 		return "";
 	}
 
-	public String salirSistema() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "./../index.xhtml?faces-redirect=true";
-	}
 
 	public String getEmail() {
 		return email;

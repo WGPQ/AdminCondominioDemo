@@ -11,6 +11,7 @@
 			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
 		<title>Ingreso de Tipo de transaccion</title>
 	</f:facet>
+	<f:event type="preRenderView" listener="#{beanAutorizacion.verificarsession()}"/>
 </h:head>
 <body>
 	<!-- Actualiza la cola de mensajes de Primefaces -->
@@ -23,7 +24,7 @@
 	<h:form id="form1">
 		<p:panel collapsed="#{beanTipotrans.panelColapasdo}">
 			<f:facet name="header">
-				<p:commandButton value="Nuevo Rol" icon="fa fa-plus" update="@form"
+				<p:commandButton value="Nuevo Tipo Transaccion" icon="fa fa-plus" update="@form,:form2"
 					actionListener="#{beanTipotrans.actionListenerColapsar()}"></p:commandButton>
 			</f:facet>
 

@@ -11,6 +11,7 @@ import condominio.model.entities.TipoTransaccion;
 import condominio.model.manager.ManagerRol;
 import condominio.model.manager.ManagerTipotrans;
 import condominio.model.manager.ManagerTransaccion;
+import condominio.model.manager.Prueba_deposito;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,6 +29,8 @@ public class BeanTransaccion implements Serializable {
 	private ManagerTipotrans managerTipotrans;
 	@EJB
 	private ManagerRol managerRol;
+	@EJB
+	private Prueba_deposito pd;
 
 	// Variables de session
 	private List<TTransaccionDescripcion> listaTransaccionDescripcion;
@@ -37,8 +40,6 @@ public class BeanTransaccion implements Serializable {
 	private List<Rol> listaRoles;
 
 	private TTransaccionDescripcion transaccionDescripcion;
-	private TipoTransaccion tipoTransaccion;
-	private Rol rol;
 	
 	private TTransaccionDescripcion transaccionDescSelecionado;
 
@@ -64,6 +65,16 @@ public class BeanTransaccion implements Serializable {
 
 	}
 
+	public void prueba() {
+		try {
+			pd.actualizarTransaccion(4, 3434);
+			JSFUtil.crearMensajeError("Bien");
+		} catch (Exception e) {
+			JSFUtil.crearMensajeError("Mal");
+		}
+		
+		
+	}
 	public void actionListenerColapsar() {
 		panelColapsado = !panelColapsado;
 	}

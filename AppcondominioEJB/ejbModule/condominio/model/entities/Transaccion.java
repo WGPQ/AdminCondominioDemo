@@ -3,7 +3,7 @@ package condominio.model.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -24,7 +24,8 @@ public class Transaccion implements Serializable {
 	@Column(length=100)
 	private String descripcion;
 
-	private Timestamp fecha;
+	@Temporal(TemporalType.DATE)
+	private Date fecha;
 
 	@Column(nullable=false, precision=10, scale=1)
 	private BigDecimal monto;
@@ -34,17 +35,17 @@ public class Transaccion implements Serializable {
 
 	//bi-directional many-to-one association to Cuenta
 	@ManyToOne
-	@JoinColumn(name="id_cuenta", nullable=false)
+	@JoinColumn(name="id_cuenta")
 	private Cuenta cuenta;
 
 	//bi-directional many-to-one association to TTransaccionDescripcion
 	@ManyToOne
-	@JoinColumn(name="id_t_descripcion", nullable=false)
+	@JoinColumn(name="id_t_descripcion")
 	private TTransaccionDescripcion TTransaccionDescripcion;
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="id_usuario", nullable=false)
+	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 
 	public Transaccion() {
@@ -66,11 +67,11 @@ public class Transaccion implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Timestamp getFecha() {
+	public Date getFecha() {
 		return this.fecha;
 	}
 
-	public void setFecha(Timestamp fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

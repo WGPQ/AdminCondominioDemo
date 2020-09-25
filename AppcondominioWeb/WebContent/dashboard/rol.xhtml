@@ -11,6 +11,7 @@
 			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
 		<title>Ingreso de Roles</title>
 	</f:facet>
+	<f:event type="preRenderView" listener="#{beanAutorizacion.verificarsession()}"/>
 </h:head>
 <body>
 	<!-- Actualiza la cola de mensajes de Primefaces -->

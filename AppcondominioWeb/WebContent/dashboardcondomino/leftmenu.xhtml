@@ -1,13 +1,17 @@
-
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-	<form id="menuform" name="menuform" method="post"
-		action="https://www.primefaces.org/omega/empty.xhtml"
-		enctype="application/x-www-form-urlencoded">
-		<input type="hidden" name="menuform" value="menuform" />
-
+<h:head>
+	<title>HOME</title>
+	<f:event type="preRenderView"
+		listener="#{beanAutorizacion.verificarsession()}" />
+</h:head>
+<body>
+	<h:form>
 		<div class="sidebar">
 			<div class="nano">
 				<div class="nano-content sidebar-scroll-content">
@@ -25,11 +29,11 @@
 						</a>
 						<ul>
 							<li><a href="#"><i class="fa fa-fw fa-sliders"></i><span>Perfil</span></a></li>
-							<li>
-							<p:commandLink action="#{beanLogin.salirSistema()}">
-							<i class="fa fa-fw fa-sign-out"></i>
-							<span>Cerrar Sesion</span>
-							</p:commandLink> </li>
+							<li><p:commandLink
+									actionListener="#{beanAutorizacion.mensaje()}">
+									<i class="fa fa-fw fa-sign-out"></i>
+									<span>Cerrar Sesion</span>
+								</p:commandLink></li>
 						</ul>
 					</div>
 
@@ -51,19 +55,18 @@
 									<li id="menuform:om_data" role="menuitem"><a href="#"><i
 											class="fa fa-table fa-fw"></i><span>Resumen</span></a></li>
 								</ul></li>
-							<li role="menuitem"><p:link outcome="registeruser"
-									target="pantalla">
+							<li role="menuitem"><p:link outcome="home" target="pantalla">
 									<i class="fa fa-user"></i>
 									<span>Condominos</span>
 								</p:link></li>
 
-							<li role="menuitem"><p:link outcome="rol" target="pantalla">
+							<li role="menuitem"><p:link outcome="home" target="pantalla">
 									<i class="fa fa-certificate fa-fw"></i>
 									<span>Rol</span>
 								</p:link></li>
-								<li role="menuitem"><p:link outcome="rol" target="pantalla">
+							<li role="menuitem"><p:link outcome="home" target="pantalla">
 									<i class="fa fa-certificate fa-fw"></i>
-									<span>Transacciones</span>
+									<span>Registrar transaccion</span>
 								</p:link></li>
 						</ul>
 						<script id="menuform:j_idt16_s" type="text/javascript">$(function () { PrimeFaces.cw("Omega", "widget_menuform_j_idt16", { id: "menuform:j_idt16" }); });</script>
@@ -71,8 +74,6 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="javax.faces.ViewState"
-			id="j_id1:javax.faces.ViewState:0"
-			value="2111974765562989912:500420170707152073" autocomplete="off" />
-	</form>
-</ui:composition>
+	</h:form>
+</body>
+</html>

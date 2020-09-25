@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta name="Viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Condomino</title>
+	</f:facet>
+</h:head>
+<body>
+
+	
+	<!-- Formulario de ingreso de datos -->
+	<h:form id="form1">
+		<!--  <p:messages>
+			<p:autoUpdate />
+		</p:messages>-->
+		<p:panel header="Registro de nuevo Condómino"
+			collapsed="#{beanUsuario.panelcolapsado}">
+			<f:facet name="header">
+				<p:commandButton value="Nuevo Condómino" update="@form"
+					icon="fa fa-plus"
+					action="#{beanUsuario.actionListenerPanelColapsado()}"></p:commandButton>
+			</f:facet>
+
+			 <p:panelGrid columns="2">
+				<h:outputText value="Cedula" />
+				<h:inputText value="#{beanUsuario.usuario.cedula}"
+					requiredMessage="Cedula es requirida." />
+				<h:outputText value="Apellidos" />
+				<h:inputText value="#{beanUsuario.usuario.apellido}" />
+				<h:outputText value="Nombres" />
+				<h:inputText value="#{beanUsuario.usuario.nombre}" />
+				
+				<h:outputText value="Genero" />
+				<p:selectOneMenu value="#{beanUsuario.usuario.genero}">
+					<f:selectItem itemLabel="Seleccione.."
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Masculino"
+						itemValue="M" noSelectionOption="true"/>
+					<f:selectItem itemLabel="Femenino"
+						itemValue="F" noSelectionOption="true"/>
+					<f:selectItem itemLabel="Otro"
+						itemValue="O" noSelectionOption="true"/>
+				</p:selectOneMenu>
+				
+				<h:outputText value="Telefono" />
+				<h:inputText value="#{beanUsuario.usuario.telefono}" />
+				<h:outputText value="Email" />
+				<h:inputText value="#{beanUsuario.usuario.email}" />
+				
+				<h:outputText value="Estado" />
+				<p:selectOneMenu value="#{beanUsuario.usuario.estado}">
+					<f:selectItem itemLabel="Seleccione.."
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Activo"
+						itemValue="true" noSelectionOption="true"/>
+					<f:selectItem itemLabel="Desactivo"
+						itemValue="false" noSelectionOption="true"/>
+				</p:selectOneMenu>
+				
+				<p:commandButton value="Insert" icon="fa fa-save"
+					update="@form,:form2"
+					 action="#{beanUsuario.actionListenerInsertarUsuario()}"/>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+	<br />
+	<!-- Formulario de visualizacion de datos -->
+	<h:form id="form2">
+		<p:panel header="Datos Condómino">
+			<p:dataTable value="#{beanUsuario.listUsuario}"
+				paginator="true" rows="5" var="usuario">
+				<p:column headerText="CEDULA" filterBy="#{usuario.cedula}"
+					filterMatchMode="contains" priority="1">
+					<h:outputText value="#{usuario.cedula}" />
+				</p:column>
+				<p:column headerText="APELLIDOS" filterBy="#{usuario.apellido}"
+					filterMatchMode="contains" priority="1">
+					<h:outputText value="#{usuario.apellido}" />
+				</p:column>
+				<p:column headerText="NOMBRES" priority="2">
+					<h:outputText value="#{usuario.nombre}" />
+				</p:column>
+				<p:column headerText="Genero" sortBy="#{usuario.genero}"
+					priority="3" style="width:50px">
+					<h:outputText value="#{usuario.genero}" />
+				</p:column>
+				<p:column headerText="EMAIL" sortBy="#{usuario.email}"
+					priority="1" style="width:50px">
+					<h:outputText value="#{usuario.email}" />
+				</p:column>
+				<p:column headerText="TELEFONO" sortBy="#{usuario.telefono}"
+					priority="2" style="width:50px">
+					<h:outputText value="#{usuario.telefono}" />
+				</p:column>
+				<p:column headerText="ESTADO" sortBy="#{usuario.estado}"
+					priority="2" style="width:50px">
+					<h:outputText value="#{usuario.estado}" />
+				</p:column>
+				<p:column headerText="OPCIONES" priority="2">
+					<p:commandButton icon="fa fa-close" update="@form"
+						actionListener="#{beanUsuario.actionListenerEliminarUsuario(usuario.cedula)}">
+						<p:confirm header="Confirmacion"
+							message="Desea eliminar este dato?"
+							icon="fa fa-exclamation-triangle">
+						</p:confirm>
+					</p:commandButton>
+					<p:commandButton icon="fa fa-edit" title="Editar"
+						actionListener="#{beanUsuario.actionListenerSeleccionarUsuario(usuario)}"
+						update=":formEdicion" oncomplete="PF('dlgEdicion').show();">
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+	<!-- Actualizar -->
+	<p:dialog header="Editar informacion" widgetVar="dlgEdicion"
+		modal="true">
+		<h:form id="formEdicion">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<h:outputText value="Cedula: " />
+			<h:outputText value="#{beanUsuario.usuarioSeleccionado.cedula}" />
+			<br />
+			<p:panelGrid columns="2">
+				<h:outputText value="Apellidos" />
+				<h:inputText
+					value="#{beanUsuario.usuarioSeleccionado.apellido}" />
+				<h:outputText value="Nombres" />
+				<h:inputText value="#{beanUsuario.usuarioSeleccionado.nombre}" />
+				
+				<h:outputText value="Genero" />
+				<p:selectOneMenu value="#{beanUsuario.usuarioSeleccionado.genero}">
+					<f:selectItem itemLabel="Seleccione.."
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Masculino"
+						itemValue="M" noSelectionOption="true"/>
+					<f:selectItem itemLabel="Femenino"
+						itemValue="F" noSelectionOption="true"/>
+					<f:selectItem itemLabel="Otro"
+						itemValue="O" noSelectionOption="true"/>
+				</p:selectOneMenu>
+				
+				<h:outputText value="Telefono" />
+				<h:inputText value="#{beanUsuario.usuarioSeleccionado.telefono}" />
+				<h:outputText value="Email" />
+				<h:inputText value="#{beanUsuario.usuarioSeleccionado.email}" />
+				
+				<h:outputText value="Estado" />
+				<p:selectOneMenu value="#{beanUsuario.usuarioSeleccionado.estado}">
+					<f:selectItem itemLabel="Seleccione.."
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Activo"
+						itemValue="true" noSelectionOption="true"/>
+					<f:selectItem itemLabel="Desactivo"
+						itemValue="false" noSelectionOption="true"/>
+				</p:selectOneMenu>
+
+			</p:panelGrid>
+			<p:commandButton value="Actualizar" icon="fa fa-save"
+				update="@form,:form2"
+				actionListener="#{beanUsuario.actionListenerActualizarUsuario()}" />
+		</h:form>
+	</p:dialog>
+
+	<!-- Cuadro de dialogo de eliminar -->
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="Si" type="button"
+			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+	</p:confirmDialog>
+
+
+
+</body>
+</html>

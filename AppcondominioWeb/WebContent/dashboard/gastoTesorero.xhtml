@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta name="Viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Condomino</title>
+	</f:facet>
+</h:head>
+<body>
+
+	
+	<!-- Formulario de ingreso de datos -->
+	<h:form id="form1">
+		<p:messages>
+			<p:autoUpdate />
+		</p:messages>
+		<p:panel header="Registro de una nueva Transacción"
+			collapsed="#{BeanGastosTesorero.panelcolapsado}">
+			<f:facet name="header">
+				<p:commandButton value="Nueva Transacción" update="@form"
+					icon="fa fa-plus"
+					action="#{BeanGastosTesorero.actionListenerPanelColapsado()}"></p:commandButton>
+			</f:facet>
+
+			 <p:panelGrid columns="2">
+			 
+				<h:outputText value="Cédula Condómino" />
+				<h:inputText value="#{BeanGastosTesorero.cedula}" />
+			 	
+			 	<h:outputText value="Fecha" />
+			 	<p:datePicker id="popupd" value="#{BeanGastosTesorero.transaccion.fecha}" />
+					
+				<h:outputText value="Monto" />
+				<h:inputText value="#{BeanGastosTesorero.transaccion.monto}" />
+				<h:outputText value="Descripción" />
+				<h:inputText value="#{BeanGastosTesorero.transaccion.descripcion}" />
+				
+				<h:outputText value="Descripción del pago" />
+				<p:selectOneMenu value="#{BeanGastosTesorero.id_t_descripcion}">
+					<f:selectItem itemLabel="Seleccione Transacción.."
+						noSelectionOption="true" />
+					<f:selectItems value="#{BeanGastosTesorero.listTTransaccionDescripcion2}" var="p"
+						itemLabel="#{p.nombre}" itemValue="#{p.idTDescripcion}" />
+				</p:selectOneMenu>
+
+				
+				<p:commandButton value="Insert" icon="fa fa-save"
+					update="@form,:form2"
+					 action="#{BeanGastosTesorero.actionListenerInsertarTransaccion()}"/>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+	<br />
+	<!-- Formulario de visualizacion de datos -->
+	<h:form id="form2">
+		<p:panel header="Datos Transacción">
+			<p:dataTable value="#{BeanGastosTesorero.listTransaccion2}"
+				paginator="true" rows="5" var="t">
+				<!--  <p:column headerText="CEDULA_USUARIO" filterBy="#{t.usuario.cedula}"
+					priority="1" filterMatchMode="contains">
+					<h:outputText value="#{t.usuario.cedula}" />
+				</p:column>-->
+				<p:column headerText="FECHA" filterBy="#{t.fecha}"
+					filterMatchMode="contains" priority="1">
+					<h:outputText value="#{t.fecha}" />
+				</p:column>
+				<!-- <p:column headerText="DESCRIPCION_PAGO"
+					filterMatchMode="contains" priority="2">
+					<h:outputText value="#{t.TTransaccionDescripcion.nombre}" />
+				</p:column>-->
+				<p:column headerText="MONTO"
+					filterMatchMode="contains" priority="2">
+					<h:outputText value="#{t.monto}" />
+				</p:column>
+				<p:column headerText="PENDIENTE"
+					priority="3" >
+					<h:outputText value="#{t.pendiente}" />
+				</p:column>
+				<p:column headerText="DESCRIPCION"
+					priority="2" >
+					<h:outputText value="#{t.descripcion}" />
+				</p:column>
+		
+				<p:column headerText="OPCIONES" priority="2" style="width:70px">
+					<p:commandButton icon="fa fa-close" update="@form"
+						actionListener="#{BeanGastosTesorero.actionListenerEliminarTransaccion(t.idTransaccion)}">
+						<p:confirm header="Confirmacion"
+							message="Desea eliminar este dato?"
+							icon="fa fa-exclamation-triangle">
+						</p:confirm>
+					</p:commandButton>
+					<p:commandButton icon="fa fa-edit" title="Editar"
+						actionListener="#{BeanGastosTesorero.actionListenerSeleccionarTransaccion(t)}"
+						update=":formEdicion" oncomplete="PF('dlgEdicion').show();">
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	
+	<!-- Actualizar -->
+	<p:dialog header="Editar informacion" widgetVar="dlgEdicion"
+		modal="true">
+		<h:form id="formEdicion">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<br />
+			<p:panelGrid columns="2">
+
+				<h:outputText value="Cédula Condómino" />
+				<h:outputText value="#{BeanGastosTesorero.transaccionSeleccionado.usuario.cedula}" />
+			 	
+			 	<h:outputText value="Fecha" />
+			 	<p:datePicker id="popup" value="#{BeanGastosTesorero.transaccionSeleccionado.fecha}" />
+					
+				<h:outputText value="Monto" />
+				<h:inputText value="#{BeanGastosTesorero.transaccionSeleccionado.monto}" />
+				<h:outputText value="Descripción" />
+				<h:inputText value="#{BeanGastosTesorero.transaccionSeleccionado.descripcion}" />
+				
+				<h:outputText value="Descripción del pago" />
+				<p:selectOneMenu value="#{BeanGastosTesorero.aux_id_t_descripcion}">
+					<f:selectItems value="#{BeanGastosTesorero.listTTransaccionDescripcion2}" var="p"
+						itemLabel="#{p.nombre}" itemValue="#{p.idTDescripcion}" />
+				</p:selectOneMenu>
+				
+				
+				
+				<!-- <p:selectOneMenu value="#{beanTransaccion.transaccionSeleccionado.TTransaccionDescripcion.nombre}">
+					<f:selectItem itemLabel="Seleccione Transacción.."
+						noSelectionOption="true" />
+					<f:selectItems value="#{beanTransaccion.listTTransaccionDescripcion}" var="p"
+						itemLabel="#{p.nombre}" itemValue="#{p.idTDescripcion}" />
+
+				</p:selectOneMenu>-->
+			</p:panelGrid>
+			<p:commandButton value="Actualizar" icon="fa fa-save"
+				update="@form,:form2"
+				actionListener="#{BeanGastosTesorero.actionListenerActualizarTransaccion()}" />
+		</h:form>
+	</p:dialog>
+
+	<!-- Cuadro de dialogo de eliminar -->
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="Si" type="button"
+			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+	</p:confirmDialog>
+	
+	
+
+</body>
+</html>

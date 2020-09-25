@@ -37,6 +37,7 @@
 		src="#{request.contextPath}/faces/resources/js/nanoscroller.js"></script>
 	<script type="text/javascript"
 		src="#{request.contextPath}/faces/resources/js/layout.js"></script>
+		<f:event type="preRenderView" listener="#{beanAutorizacion.verificarsession()}"/>
 </h:head>
 <body class="main-body menu-layout-static">
 	<div class="wrapper">

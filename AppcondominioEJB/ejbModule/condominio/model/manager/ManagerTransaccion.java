@@ -1,6 +1,5 @@
 package condominio.model.manager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -20,15 +19,11 @@ import condominio.model.entities.TipoTransaccion;
 @LocalBean
 public class ManagerTransaccion {
 
-	@PersistenceContext
-	private EntityManager em;
-
-	/**
-	 * Default constructor.
-	 */
-	public ManagerTransaccion() {
-		// TODO Auto-generated constructor stub
-	}
+    @PersistenceContext
+    private EntityManager em;
+    public ManagerTransaccion() {
+        // TODO Auto-generated constructor stub
+    }
 
 	// Metodos de extracion de datos
 
@@ -75,7 +70,6 @@ public class ManagerTransaccion {
 		if(trdes != null)
 			em.remove(trdes);
 	}
-
 	public void actalizarTransacionDesc(TTransaccionDescripcion transacionDesc, String descripcion,
 			int idTipoTransaccion, int idRol) throws Exception {
 		
@@ -91,6 +85,7 @@ public class ManagerTransaccion {
 		tdesc.setTipoTransaccion(ttrans);
 		em.merge(tdesc);
 	}
+	
 	
 
 }
